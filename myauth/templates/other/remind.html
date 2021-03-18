@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>后台签到页面登录</title>
+    <!-- Bootstrap -->
+    <link href="../../static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../static/css/remind.css" rel="stylesheet">
+  </head>
+  <body>
+    <!-- 登录框 -->
+    <div class="login-box">
+      <div class="top-banner">
+        <h1>推荐系统登录</h1>
+        <h2>项目研究人员指定登录界面</h2>
+      </div>
+      <div class="admin-msg">
+        <ul class="page-ul clearfix row">
+          <li class="col-md-6">
+            <a href="javascript:void(0);" class="guest-btn active-btn">
+              登录
+            </a>
+          </li>
+          <li class="col-md-6">
+            <a href="javascript:void(0);" class="register-btn">
+              注册
+            </a>
+          </li>
+        </ul>
+        <!-- 用户登录框 -->
+        <form class="form-horizontal guest-login login-container active-container" action="{% url 'myauth:slogin' %}" method="post">
+            {% csrf_token %}
+            <div class="has-error">{{ 错误 }}</div>
+          <div class="form-group account-input">
+            <label for="inputEmail3" class="col-sm-3 control-label">账号:</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="inputEmail3" placeholder="Account" name="username">
+            </div>
+          </div>
+          <div class="form-group password-input">
+            <label for="inputPassword3" class="col-sm-3 control-label">密码:</label>
+            <div class="col-sm-8">
+              <input type="password" class="form-control" id="inputPassword3" placeholder="Password" name="password">
+            </div>
+          </div>
+            <button type="submit" class="login-btn">登陆</button>
+        </form>
+          <!-- 注册框 -->
+        <form class="form-horizontal register-login login-container" action="{% url 'myauth:register' %}" method="post">
+            {% csrf_token %}
+          <div class="form-group account-input">
+            <label for="inputEmail3" class="col-sm-3 control-label">账号:</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" autofocus required id="inputEmail3" placeholder="Account" name="username" maxlength="150" >
+            </div>
+          </div>
+          <div class="form-group password-input">
+            <label for="inputPassword3" class="col-sm-3 control-label">密码:</label>
+            <div class="col-sm-8">
+              <input type="password" class="form-control" required id="inputPassword3" placeholder="Password" name="password1">
+            </div>
+          </div>  
+          <div class="form-group password-input">
+            <label for="inputPassword3" class="col-sm-3 control-label">确认密码:</label>
+            <div class="col-sm-8">
+              <input type="password" class="form-control" required id="inputPassword3" placeholder="Repeat" name="password2">
+            </div>
+          </div> 
+          <div class="form-group password-input">
+            <label for="inputPassword3" class="col-sm-3 control-label">邮箱:</label>
+            <div class="col-sm-8">
+              <input type="email" class="form-control" id="inputPassword3" placeholder="Email" name="email" maxlength="254">
+            </div>
+          </div> 
+          <div class="form-group password-input">
+            <label for="inputPassword3" class="col-sm-3 control-label">昵称:</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" required id="inputPassword3" placeholder="NikeName" name="nikname" maxlength="50">
+            </div>
+          </div> 
+          <div class="form-group password-input">
+            <label for="inputPassword3" class="col-sm-3 control-label">生日:</label>
+            <div class="col-sm-8">
+              <input type="date" class="form-control" id="inputPassword3" placeholder="Birthday" name="birthday">
+            </div>
+          </div> 
+          <button type="submit" class="login-btn">注册</button>
+        </form>
+      </div>
+    </div>
+    <canvas id="canvas"></canvas>
+    <!-- jQuery -->
+    <script src="../../static/js/jquery-2.1.1.min.js"></script>
+    <!-- bootstrap -->
+    <script src="../../static/js/bootstrap.min.js"></script>
+    <!-- own js -->
+    <script src="../../static/js/remind.js"></script>
+  </body>
+</html>

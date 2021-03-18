@@ -1,0 +1,172 @@
+html{
+    width: 100%;
+    height: 100%;
+}
+body{
+    width: 100%;
+    height: 100%;
+}
+.user{
+    width: 30%;
+    height: 100%;
+    position: relative;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: white;
+    border-right: 1px solid #f2f2f2;
+    z-index: 3;
+}
+.movie{
+    width: 70%;
+    height: 100%;
+    margin-left: 30%;
+    position: relative;
+    margin-top: 61px;
+}
+.list-nav{
+    width: 70%;
+    height: 60px;
+    position: fixed;
+    left: 30%;
+    top:0;
+    background: white;
+    border-bottom: 1px solid #f2f2f2;
+    z-index: 3;
+}
+.nav-ul{
+    float: left;
+    font-size: 12px;
+    padding-left: 30px;
+    margin: 0px;
+    padding-right: 30px;
+}
+.nav-btn{
+    color: #464646;
+    font-size: 14px;
+    font-weight: 400;
+    margin-right: 20px;
+    height: 60px;
+    display: block;
+    float: left;
+    line-height: 60px;
+    color: #5A5A5A;
+    font-size: 12px;
+}
+.nav-btn:hover{
+    border-bottom: 1px solid #5A5A5A;
+}
+a{
+    text-decoration: none;
+    cursor: pointer;
+}
+.banner-btn:hover{
+    text-decoration: underline;
+}
+a:hover{
+    text-decoration: none;
+}
+.active-nav{
+    border-bottom: 1px solid #5A5A5A;
+}
+.user-banner{
+    text-align: center;
+    padding-top: 200px;
+}
+.user-banner img{
+    width: 128px;
+    height: 128px;
+    border-radius: 64px;
+}
+.user-banner h3{
+    color: #464646;
+    font-weight: bold;
+    font-size: 32px;
+}
+.user-banner ul{
+    width: 100%;
+    padding:0px;
+    margin: 0px;
+    text-align: center;
+    padding-top: 30px;
+}
+.user-banner ul li{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.user-banner ul a{
+    color: #464646;
+    font-size: 14px;
+    font-weight: 400;
+}
+.search{
+    display: inline-block;
+    height: 60px;
+    margin:0px;
+    line-height: 60px;
+    
+}
+.search input{
+    font-size: 12px;
+}
+.search button{
+    font-size: 12px;
+}
+.btn-list{
+    display: inline-block;
+}
+.btn-list button{
+    font-size: 12px;
+}
+.btn-list ul{
+    font-size: 12px;
+}
+.movie ul {
+    padding-top: 15px;
+    padding-left: 15px;
+    width: 100%;
+}
+
+.clearfix:after{/*伪元素是行内元素 正常浏览器清除浮动方法*/
+    content: "";
+    display: block;
+    height: 0;
+    clear:both;
+    visibility: hidden;
+}
+.clearfix{
+    *zoom: 1;/*ie6清除浮动的方式 *号只有IE6-IE7执行，其他浏览器不执行*/
+}
+.showMovie{
+    border-radius: 3px;
+    margin-bottom: 30px;
+    height: 450px;
+}
+.showMovie .service{
+    box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.08);
+}
+.showMovie .service .card{
+    width: 100%;
+}
+.showMovie .service .card img{
+    width: 100%;
+    border-radius: 3px;
+}
+.card-bottom {
+    width: 100%;
+    margin:0px;
+    padding:0px;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.card-bottom h4{
+    width: 100%;
+    font-size: 12px;
+}
+.card-bottom a{
+    color: #5f5f5f;
+}
+.card-bottom a:hover{
+    text-decoration: underline;
+}

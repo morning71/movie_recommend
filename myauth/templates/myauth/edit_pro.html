@@ -1,0 +1,177 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人中心</title>
+    <link rel="stylesheet" href="../../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/css/index.css">
+    <style type="text/css">
+        .user-box{
+            padding: 15px;
+        }
+        .fixed{
+            padding-top: 7px;
+        }
+        .btn-fixed{
+            margin-left: 133px;
+        }
+    </style>
+</head>
+<body>
+    <div class="user">
+        <div class="user-banner">
+            {% if user.is_authenticated %}
+                <img src="../../static/img/user-head.jpg" alt="user">
+                <h3>{{ user.username }}</h3>
+                <ul>
+                    <li>
+                        <a class="banner-btn" href="{% url 'myauth:user_center' %}">个人中心</a>
+                    </li>
+                    <li>
+                        <a class="banner-btn" href="{% url 'myauth:noticeUser' %}">用户告知</a>
+                    </li>
+                    <li>
+                        <a class="banner-btn" href="{% url 'myauth:slogout' %}">登出</a>
+                    </li>   
+                </ul>
+            {% else %}
+                <a href="{% url 'myauth:slogin' %}">登录</a>
+                <a href="{% url 'myauth:register' %}">注册</a>
+            {% endif %}
+        </div>
+    </div>
+    <div class="list-nav">
+        <ul class="nav-ul">
+            <a class="nav-btn active-nav" href="{% url 'myauth:index'%}">
+                首页
+            </a>
+            <a class="nav-btn" href="{% url 'myauth:hot' %}">
+                热门电影
+            </a>
+            <a class="nav-btn" href="{% url 'myauth:recommd3' %}">
+                量身定制
+            </a>
+            <a class="nav-btn" href="{% url 'myauth:NEW_movie' %}">
+                最新电影
+            </a>
+            <a class="nav-btn" href="{% url 'myauth:coll_movie' %}">
+                我的收藏
+            </a>
+            <a class="nav-btn" href="{% url 'myauth:keshihua' %}">
+                数据统计
+            </a>
+            <a class="nav-btn" href="{% url 'myauth:new_hot' %}">
+                最高评分
+            </a>
+            <form class="form-inline search" method="post" action="{% url 'myauth:search_movie' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <input name="movie_name"  class="form-control" id="exampleInputEmail3" placeholder="请输入搜索内容">
+                </div>
+                <button type="submit" class="btn btn-default">搜索</button>
+            </form>
+            <div class="btn-group btn-list">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  筛选<span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><form id="juqing" action="" method="post">
+                      {% csrf_token %}
+                        <input type="hidden" value="动作" name="info">
+                        <a onclick="document:juqing.submit();">动作</a>
+                    </form></li>
+                  <li><form id="juqing" action="" method="post">
+                      {% csrf_token %}
+                        <input type="hidden" value="剧情" name="info">
+                        <a onclick="document:juqing.submit();">剧情</a>
+                    </form></li>
+                  <li><form id="juqing" action="" method="post">
+                      {% csrf_token %}
+                        <input type="hidden" value="爱情" name="info">
+                        <a onclick="document:juqing.submit();">爱情</a>
+                    </form>
+                  </li>
+                    <li><form id="juqing" action="" method="post">
+                      {% csrf_token %}
+                        <input type="hidden" value="喜剧" name="info">
+                        <a onclick="document:juqing.submit();">喜剧</a>
+                    </form>
+                  <li><form id="juqing" action="" method="post">
+                      {% csrf_token %}
+                        <input type="hidden" value="动画" name="info">
+                        <a onclick="document:juqing.submit();">动画</a>
+                    </form>
+                  </li>
+                  <li><form id="juqing" action="" method="post">
+                      {% csrf_token %}
+                        <input type="hidden" value="科幻" name="info">
+                        <a onclick="document:juqing.submit();">科幻</a>
+                    </form>
+                  </li>
+                  <li><form id="juqing" action="" method="post">
+                      {% csrf_token %}
+                        <input type="hidden" value="犯罪" name="info">
+                        <a onclick="document:juqing.submit();">犯罪</a>
+                    </form>
+                  </li>
+                  <li><form id="juqing" action="" method="post">
+                      {% csrf_token %}
+                        <input type="hidden" value="恐怖" name="info">
+                        <a onclick="document:juqing.submit();">恐怖</a>
+                    </form>
+                  </li>
+                </ul>
+              </div>
+        </ul>
+    </div>
+    <div class="movie clearfix">  
+        <div class="user-box">
+            <ol class="breadcrumb">
+                <li><a href="{% url 'myauth:user_center' %}">个人中心</a></li>
+                <li class="active">编辑个人信息</li>
+                <li><a href="{% url 'myauth:user_change_pass' %}"> 修改密码</a></li>
+            </ol>
+            <!-- <a href="{% url 'myauth:user_center' %}">个人中心</a>
+            <a href="{% url 'myauth:edit_pro' %}">编辑个人信息</a>
+            <a href="{% url 'myauth:user_change_pass' %}">修改密码</a> -->
+            <form class="form-horizontal" action="" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="id_username" class="col-sm-2 control-label">用户名:</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="username" value="{{ user.username }}" maxlength="150" required id="id_username" class="form-control"  placeholder="name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="id_email" class="col-sm-2 control-label">邮箱:</label>
+                    <div class="col-sm-10">
+                        <input type="email" name="email" value="{{ user.email }}" maxlength="254" required id="id_email" class="form-control"  placeholder="email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="id_nikname" class="col-sm-2 control-label">昵称:</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="nikname" value="{{ user.commuser.nikname }}" maxlength="50" required id="id_nikname" class="form-control"  placeholder="nikname">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="id_birthday" class="col-sm-2 control-label">生日:</label>
+                    <div class="col-sm-10 fixed">
+                        <input type="date" name="birthday" value="{{ user.commuser.birthday}}" required id="birthday class="form-control"  placeholder="nikname">
+                    </div>
+                </div>
+                <!-- <p><label for="id_username">用户名:</label> <input type="text" name="username" value="{{ user.username }}" maxlength="150"
+                                                                required id="id_username">
+                </p> -->
+                <!-- <p><label for="id_email">电子邮件地址:</label> <input type="email" name="email" value="{{ user.email }}"
+                                                                maxlength="254" id="id_email"></p> -->
+                <!-- <p><label for="id_nikname">Nikname:</label> <input type="text" name="nikname" maxlength="50" required
+                                                                id="id_nikname" value="{{ user.commuser.nikname }}"></p> -->
+                <!-- <p><label for="id_birthday">Birthday:</label> <input type="date" name="birthday" required id="id_birthday" value="{{ user.commuser.birthday }}"></p>-->
+                <button class="btn btn-default btn-fixed" type="submit">提交</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

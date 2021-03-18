@@ -1,0 +1,6 @@
+crawl:爬虫程序，包含爬豆瓣电影，101影院第三方播放连接
+myauth/static:静态资源文件夹
+myauth/templates：前端html文件夹
+myauth/svdrecommend.py：基于svd的协同过滤推荐算法
+movie.sql：项目所用到的所有数据
+其余均为django文件
